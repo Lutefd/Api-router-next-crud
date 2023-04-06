@@ -24,7 +24,7 @@ export default function handler(
       FileSystem.readFile('test.json', (err, data) => {
         const { name, age } = req.body;
         if (!name || !age) {
-          res.status(400).json({ error: 'Name and age are required fields' });
+          res.status(400).json({ error: 'Name e Age são campos obrigatórios' });
           return;
         }
         const id = uuidv4();
@@ -40,18 +40,18 @@ export default function handler(
             if (err) {
               console.log(err);
               res.status(500).json({
-                error: 'An error occurred while appending data to the file',
+                error: 'Um erro ocorreu ao adicionar os dados ao arquivo',
               });
               return;
             }
-            console.log('Data appended to file successfully');
+            console.log('Dados adicionados com sucesso!');
             res.status(200).json(response);
           });
         } catch (err) {
           console.log(err);
           res
             .status(500)
-            .json({ error: 'An error occurred while parsing the JSON data' });
+            .json({ error: 'Um erro ocorreu ao realizar o parsing do JSON' });
         }
       });
       break;
@@ -65,12 +65,13 @@ export default function handler(
           console.log(err);
           res
             .status(500)
-            .json({ error: 'An error occurred while parsing the JSON data' });
+            .json({ error: 'Um erro ocorreu ao realizar o parsing do JSON' });
         }
       });
       break;
+
     default:
       res.setHeader('Allow', ['POST', 'GET']);
-      res.status(405).end(`Method ${method} Not Allowed`);
+      res.status(405).end(`Metodo ${method} Não Permitido`);
   }
 }
