@@ -5,7 +5,9 @@ export default function useDataQuery() {
   const { isLoading, data } = useQuery(
     ['queryData'],
     async () => {
-      const response = await axios.get('http://localhost:3000/api/user/');
+      const response = await axios.get(
+        'https://api-route-test-rho.vercel.app/api/user/'
+      );
       return response.data;
     },
 
