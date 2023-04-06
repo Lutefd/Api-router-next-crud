@@ -16,12 +16,45 @@
   z-index: 2;
   font-family: var(--font-mono);
 }
-
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-bottom: 1rem;
+}
 .description a {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 0.5rem;
+}
+
+.button {
+  padding: 1rem 2rem;
+  border-radius: var(--border-radius);
+  background: black;
+  color: white;
+  width: 30rem;
+  justify-self: center;
+  margin-top: 2rem;
+}
+.buttonForm {
+  padding: 1rem 2rem;
+  border-radius: var(--border-radius);
+  background: black;
+  color: white;
+  width: 15rem;
+  justify-self: center;
+  margin-top: 2rem;
+  outline: none;
+  border: none;
+  cursor: pointer;
 }
 
 .description p {
@@ -44,10 +77,11 @@
   width: var(--max-width);
   max-width: 100%;
   justify-content: center;
+  gap: 1rem;
 }
 
 .card {
-  padding: 1rem 1.2rem;
+  padding: 1.5rem 2rem;
   border-radius: var(--border-radius);
   background: rgba(var(--card-rgb), 0);
   border: 1px solid rgba(var(--card-border-rgb), 0);
@@ -56,13 +90,59 @@
 }
 
 .card span {
-  display: inline-block;
   transition: transform 200ms;
 }
 
 .card h2 {
   font-weight: 600;
-  margin-bottom: 0.7rem;
+}
+.card a {
+  font-weight: 600;
+}
+.flexContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+}
+.flexButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.flexButtons button {
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius);
+  background: black;
+  color: white;
+  width: 5rem;
+  justify-self: center;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+.flexButtons button:hover {
+  background: white;
+  color: black;
+  border: 1px solid black;
+}
+.flexButtons a {
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius);
+  background: black;
+  color: white;
+  width: 5rem;
+  justify-self: center;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 12.5px;
+}
+.flexButtons a:hover {
+  background: white;
+  color: black;
+  border: 1px solid black;
 }
 
 .card p {
