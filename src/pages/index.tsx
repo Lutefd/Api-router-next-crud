@@ -1,8 +1,8 @@
 import Head from 'next/head';
 import { Inter } from 'next/font/google';
 import styles from '@/styles/Home.module.css';
-import useDataQuery from './queries/queryData';
-import useDeleteMutation from './queries/deleteMutation';
+import useDataQuery from '../queries/queryData';
+import useDeleteMutation from '../queries/deleteMutation';
 import Link from 'next/link';
 import { useState } from 'react';
 const inter = Inter({ subsets: ['latin'] });

@@ -2,9 +2,8 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import styles from '@/styles/Home.module.css';
 import { useState } from 'react';
-import useDynamicDataQuery from '../queries/dynamicQueryData';
-import useEditDataMutation from '../queries/editMutation';
-import { redirect } from 'next/navigation';
+import useDynamicDataQuery from '../../queries/dynamicQueryData';
+import useEditDataMutation from '../../queries/editMutation';
 const EditUser = () => {
   const router = useRouter();
   const { pid } = router.query;

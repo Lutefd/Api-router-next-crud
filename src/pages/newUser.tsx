@@ -3,7 +3,7 @@ import styles from '@/styles/Home.module.css';
 import { useState } from 'react';
 import { Inter } from 'next/font/google';
 import { useRouter } from 'next/router';
-import useCreateDataMutation from './queries/dataMutation';
+import useCreateDataMutation from '../queries/dataMutation';
 
 const inter = Inter({ subsets: ['latin'] });
 const NewUser = () => {

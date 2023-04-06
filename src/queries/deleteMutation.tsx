@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import axios from 'axios';
 
-export default function useDeleteMutation(id: string) {
+const useDeleteMutation = (id: string) => {
   const queryClient = useQueryClient();
   const deleteMutation = useMutation(
     async () => {
@@ -19,4 +19,6 @@ export default function useDeleteMutation(id: string) {
     }
   );
   return { deleteMutation };
-}
+};
+
+export default useDeleteMutation;
