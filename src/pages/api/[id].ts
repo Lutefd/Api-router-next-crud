@@ -1,8 +1,8 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import fs from 'fs/promises';
 import FileSystem from 'fs';
+import path from 'path';
 
-import { join } from 'path';
 interface Data {
   id?: string;
   name?: string;
@@ -19,12 +19,17 @@ export default async function handler(
   } = req;
 
   try {
-    const fileContent = await fs.readFile('test.json', 'utf-8');
+    const jsonDirectory = path.join(process.cwd(), 'json');
+
+    const fileContent = await fs.readFile(
+      jsonDirectory + '/test.json',
+      'utf-8'
+    );
     const data: Data[] = JSON.parse(fileContent);
 
     switch (method) {
       case 'GET':
-        FileSystem.readFile('test.json', (err, data) => {
+        FileSystem.readFile(jsonDirectory + '/test.json', (err, data) => {
           if (err) {
             console.log(err);
             res.status(500).json({ error: 'Internal server error' });
@@ -52,7 +57,11 @@ export default async function handler(
           return;
         }
         const deletedItem = data.splice(index, 1)[0];
-        await fs.writeFile('test.json', JSON.stringify(data), 'utf-8');
+        await fs.writeFile(
+          jsonDirectory + '/test.json',
+          JSON.stringify(data),
+          'utf-8'
+        );
         res.status(200).json(deletedItem);
         break;
       case 'PUT':
@@ -62,7 +71,7 @@ export default async function handler(
           res.status(400).json({ error: 'Name e Age são campos obrigatorios' });
           return;
         }
-        FileSystem.readFile('test.json', (err, data) => {
+        FileSystem.readFile(jsonDirectory + '/test.json', (err, data) => {
           if (err) {
             console.log(err);
             res.status(500).json({ error: 'Internal server error' });
@@ -83,15 +92,19 @@ export default async function handler(
 
             const updatedDataString = JSON.stringify(jsonData);
 
-            FileSystem.writeFile('test.json', updatedDataString, (err) => {
-              if (err) {
-                console.log(err);
-                res.status(500).json({ error: 'Internal server error' });
-                return;
+            FileSystem.writeFile(
+              jsonDirectory + '/test.json',
+              updatedDataString,
+              (err) => {
+                if (err) {
+                  console.log(err);
+                  res.status(500).json({ error: 'Internal server error' });
+                  return;
+                }
+                console.log('Usuário atualizado com sucesso!');
+                res.status(200).json(updatedItem);
               }
-              console.log('Usuário atualizado com sucesso!');
-              res.status(200).json(updatedItem);
-            });
+            );
           } catch (err) {
             console.log(err);
             res.status(500).json({ error: 'Internal server error' });
