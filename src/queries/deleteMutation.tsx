@@ -5,9 +5,7 @@ const useDeleteMutation = (id: string) => {
   const queryClient = useQueryClient();
   const deleteMutation = useMutation(
     async () => {
-      const response = await axios.delete(
-        `https://api-route-test-rho.vercel.app/api/${id}/`
-      );
+      const response = await axios.delete(`http://localhost:3000/api/${id}/`);
       return response.data;
     },
     {

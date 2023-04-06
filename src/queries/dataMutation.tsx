@@ -3,7 +3,7 @@ import axios from 'axios';
 
 export default function useCreateDataMutation() {
   const queryClient = useQueryClient();
-  const postURL = 'https://api-route-test-rho.vercel.app/api/user/';
+  const postURL = 'http://localhost:3000/api/user/';
 
   const createDataMutation = useMutation(
     async (data: object) => {
